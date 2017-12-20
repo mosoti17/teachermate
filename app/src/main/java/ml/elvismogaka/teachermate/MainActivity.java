@@ -11,10 +11,12 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import ml.elvismogaka.teachermate.database.DataBaseHelper;
 import ml.elvismogaka.teachermate.ui.ClassesFragment;
 import ml.elvismogaka.teachermate.ui.TimetableFragment;
 
 public class MainActivity extends AppCompatActivity {
+    DataBaseHelper db;
 
     private TextView mTextMessage;
     public Fragment selectedFragment;
@@ -50,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        db=new DataBaseHelper(this);
 
         mTextMessage = (TextView) findViewById(R.id.message);
 

@@ -7,14 +7,12 @@
     android:layout_height="match_parent"
     tools:context="ml.elvismogaka.teachermate.MainActivity">
 
-  
+
     <FrameLayout
+        android:id="@+id/fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/fragment"
-        android:animateLayoutChanges="true">
-
-    </FrameLayout>
+        android:animateLayoutChanges="true" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
