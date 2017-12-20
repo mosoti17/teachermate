@@ -2,6 +2,7 @@ package ml.elvismogaka.teachermate.database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -43,6 +44,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             return false;
         else
         return true;
+
+    }
+    public Cursor getClasses(){
+        SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
+        Cursor result=sqLiteDatabase.rawQuery("select * from "+ CLASS_NAME,null);
+        return result;
 
     }
 }
