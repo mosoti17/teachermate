@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +20,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import ml.elvismogaka.teachermate.R;
+import ml.elvismogaka.teachermate.adapters.ClassListAdapter;
 import ml.elvismogaka.teachermate.database.DataBaseHelper;
 import ml.elvismogaka.teachermate.models.Class;
 
@@ -27,7 +30,8 @@ import ml.elvismogaka.teachermate.models.Class;
 public class ClassesFragment extends Fragment {
     Button addclass;
     DataBaseHelper myDb;
-    ListView classes;
+     RecyclerView classesRecycler;
+     ClassListAdapter classesAdapter;
 
     public static ClassesFragment newInstance(){
         ClassesFragment classesFragment= new ClassesFragment();
@@ -47,7 +51,8 @@ public class ClassesFragment extends Fragment {
         View view= inflater.inflate(R.layout.fragment_classes, container, false);
         myDb = new DataBaseHelper(getContext());
         addclass=view.findViewById(R.id.addclass);
-        classes= view.findViewById(R.id.list_view);
+        classesRecycler=view.findViewById(R.id.recyclerView);
+
         addclass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,20 +68,23 @@ public class ClassesFragment extends Fragment {
     }
     public void showClasses(){
         Cursor result=myDb.getClasses();
-        ArrayList<String> name=new ArrayList<>();
-        ArrayList<String> classteacher=new ArrayList<>();
+        ArrayList<Class> classes= new ArrayList<>();
         while (result.moveToNext()){
-            Log.v("id",result.getString(0));
-            name.add(result.getString(1));
-            Log.v("name",result.getString(1));
-            classteacher.add(result.getString(2));
-            Log.v("ct",result.getString(2));
-            String[] stockArr = new String[name.size()];
-
-
-
+            Class entry= new Class(Integer.parseInt(result.getString(0)),result.getString(1),result.getString(2));
+            classes.add(entry);
 
         }
+        Log.v("class",String.valueOf(classes.size()));
+
+
+        classesAdapter = new ClassListAdapter(classes,getActivity());
+        classesRecycler.setAdapter(classesAdapter);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        classesRecycler.setLayoutManager(layoutManager);
+        classesRecycler.setHasFixedSize(false);
+
+
+
     }
 
 }
