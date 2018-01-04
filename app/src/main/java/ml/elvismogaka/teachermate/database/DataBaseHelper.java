@@ -52,4 +52,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return result;
 
     }
+    public boolean updateClass(String id,String name,String classteacher){
+        SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
+        ContentValues contentValues=new ContentValues();
+        contentValues.put(Col1,id);
+        contentValues.put(Col2,name);
+        contentValues.put(Col3,classteacher);
+        sqLiteDatabase.update(CLASS_NAME,contentValues, "ID = ? ",new String [] {id });
+        return true;
+
+    }
 }

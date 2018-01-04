@@ -2,6 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/rowview"
     android:layout_marginBottom="10dp">
 
     <TextView
@@ -19,5 +20,15 @@
         android:textSize="16dp"
         android:id="@+id/classtech"
         android:text="Class Teacher: Charles"/>
+
+    <!--<Button-->
+
+        <!--android:layout_width="wrap_content"-->
+        <!--android:id="@+id/updateclass"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignLeft="@+id/classtech"-->
+        <!--android:layout_alignStart="@+id/classtech"-->
+        <!--android:layout_below="@+id/classtech"-->
+        <!--android:text="Update"/>-->
 
 </RelativeLayout>

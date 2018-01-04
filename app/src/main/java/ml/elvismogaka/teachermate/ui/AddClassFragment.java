@@ -3,8 +3,7 @@ package ml.elvismogaka.teachermate.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +14,8 @@ import android.widget.Toast;
 import ml.elvismogaka.teachermate.R;
 import ml.elvismogaka.teachermate.database.DataBaseHelper;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
+
 public class AddClassFragment extends DialogFragment {
     EditText className;
     EditText classTeacher;
@@ -39,6 +37,7 @@ public class AddClassFragment extends DialogFragment {
         className=view.findViewById(R.id.classname);
         classTeacher=view.findViewById(R.id.classteachername);
         addClass=view.findViewById(R.id.addclassbutton);
+
         addClass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,6 +51,7 @@ public class AddClassFragment extends DialogFragment {
                    Toast.makeText(getContext(),"Class Added",Toast.LENGTH_LONG).show();
                }
 
+                ClassesFragment.newInstance();
 
                 dismiss();
             }

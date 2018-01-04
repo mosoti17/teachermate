@@ -11,11 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -58,11 +54,16 @@ public class ClassesFragment extends Fragment {
             public void onClick(View view) {
                 FragmentManager fm=getFragmentManager();
                 AddClassFragment addClassFragment=new AddClassFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("source","add");
+                addClassFragment.setArguments(bundle);
                 addClassFragment.show(fm,"dialog");
 
 
             }
         });
+
+
         showClasses();
         return view;
     }
